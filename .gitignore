@@ -1,2 +1,18 @@
+.tmp
+.DS_Store
+project.godot
+test-scenes
+
+/.import
+/.vscode
+/default_env.tres
+/default_bus_layout.tres
+/icon.svg
+/icon.svg.import
+export_presets.cfg
+
+# Place test project files here
+/test-project
+
 # Godot 4+ specific ignores
 .godot/
