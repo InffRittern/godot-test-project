@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://smvoqam8a4mv"
-path.s3tc="res://.godot/imported/level_zero_223.png-867abf14081e18ab7283da92388e5d93.s3tc.ctex"
+uid="uid://ddbm0d8rggavm"
+path.s3tc="res://.godot/imported/level_zero_223.png-04fa0fdca0f840d56563388b4980e283.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://level_zero_223.png"
-dest_files=["res://.godot/imported/level_zero_223.png-867abf14081e18ab7283da92388e5d93.s3tc.ctex"]
+source_file="res://levels/level_zero/blend/level_zero_223.png"
+dest_files=["res://.godot/imported/level_zero_223.png-04fa0fdca0f840d56563388b4980e283.s3tc.ctex"]
 
 [params]
 

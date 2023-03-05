@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqd2oq2y7yb3i"
-path.s3tc="res://.godot/imported/level_zero_ground_1_a.png-976a823112e18ba585c60fadf14c34c5.s3tc.ctex"
+uid="uid://ck5r8nrlbl6d"
+path.s3tc="res://.godot/imported/test_cube_ground_1_a.png-d072b249dece06ab3867957e21faeca9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://level_zero_ground_1_a.png"
-dest_files=["res://.godot/imported/level_zero_ground_1_a.png-976a823112e18ba585c60fadf14c34c5.s3tc.ctex"]
+source_file="res://levels/level_zero/blend/test_cube_ground_1_a.png"
+dest_files=["res://.godot/imported/test_cube_ground_1_a.png-d072b249dece06ab3867957e21faeca9.s3tc.ctex"]
 
 [params]
 
