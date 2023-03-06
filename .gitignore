@@ -5,6 +5,7 @@ test-scenes
 
 /.import
 /.vscode
+/export
 /default_env.tres
 /default_bus_layout.tres
 /icon.svg
