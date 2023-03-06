@@ -7,10 +7,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var friction: float = 60
 @export var air_friction: float = 10
 @export var jump_impolse: float = 5
-@export var mouse_sensitivity: float = .01
+@export_range(0.01, 1, 0.01) var mouse_sensitivity: float = 0.01
 @export var controller_sensitivity: float = 3
-@export var camera_angle_bottom: float = -45
-@export var camera_angle_up: float = 45
+@export var camera_angle_bottom: float = -90
+@export var camera_angle_up: float = 90
 
 #nodes
 @onready var head := $Head
@@ -32,6 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 func apply_controller_rotation():
 	var axis_vector = Vector2.ZERO
+	
 	axis_vector.x = Input.get_action_strength('look_right') - Input.get_action_strength('look_left')
 	axis_vector.y = Input.get_action_strength('look_down') - Input.get_action_strength('look_up')
 	
@@ -42,14 +43,12 @@ func apply_controller_rotation():
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
-	print('input vector', input_vector)
-	print('dirction vector', direction)
 	apply_movement(direction, delta)
 	apply_friction(direction, delta)
 	apply_gravity(delta)
 	jump()
 	apply_controller_rotation()
-	head.rotation.x = clamp(head.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
 	move_and_slide()
 	
 	
