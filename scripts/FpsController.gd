@@ -42,6 +42,8 @@ func apply_controller_rotation():
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
+	print('input vector', input_vector)
+	print('dirction vector', direction)
 	apply_movement(direction, delta)
 	apply_friction(direction, delta)
 	apply_gravity(delta)
@@ -55,9 +57,9 @@ func get_input_vector():
 	var input_vector = Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	return input_vector.normalized() if input_vector.length() > 1 else input_vector
 	
-func get_direction(input_vector: Vector3):
+func get_direction(input_vector: Vector2):
 	var direction = Vector3.ZERO
-	direction = (input_vector.x * transform.basis.x) + (input_vector.z * transform.basis.z)
+	direction = (input_vector.x * head.transform.basis.x) + (input_vector.y * head.transform.basis.z)
 	return direction.normalized()
 	
 func apply_movement(direction: Vector3, delta: float):
