@@ -1,8 +1,6 @@
 extends CharacterBody3D
 
 
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var gravity_vector = ProjectSettings.get_setting('physics/3d/default_gravity_vector')
 @export var max_speed: float = 10
 @export var acceleration: float = 70
 @export var friction: float = 60
@@ -12,6 +10,7 @@ var gravity_vector = ProjectSettings.get_setting('physics/3d/default_gravity_vec
 @export var controller_sensitivity: float = 3
 @export var camera_angle_bottom: float = -90
 @export var camera_angle_up: float = 90
+@export_range(0, 100, 0.5) var gravity: float = 9.8
 
 #nodes
 @onready var head := $Head
