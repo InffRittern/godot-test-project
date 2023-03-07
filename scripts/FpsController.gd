@@ -8,7 +8,7 @@ var gravity_vector = ProjectSettings.get_setting('physics/3d/default_gravity_vec
 @export var friction: float = 60
 @export var air_friction: float = 10
 @export var jump_impolse: float = 5
-@export_range(0.01, 1, 0.01) var mouse_sensitivity: float = 0.01
+@export_range(0.001, 1, 0.001) var mouse_sensitivity: float = 0.001
 @export var controller_sensitivity: float = 3
 @export var camera_angle_bottom: float = -90
 @export var camera_angle_up: float = 90
@@ -83,8 +83,6 @@ func apply_gravity(delta: float):
 	# TODO gravity hack need fix
 	velocity.y += -gravity * delta
 	velocity.y = clamp(velocity.y, -gravity, jump_impolse)
-	print(gravity)
-	print(velocity.y)
 	
 func jump():
 	if Input.is_action_just_pressed('jump') and is_on_floor():
