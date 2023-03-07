@@ -79,8 +79,10 @@ func apply_friction(direction: Vector3, delta: float):
 			velocity.z = velocity.move_toward(Vector3.ZERO, air_friction * delta).z
 			
 func apply_gravity(delta: float):
-	velocity.y += gravity * delta
+	velocity.y += -gravity * delta
 	velocity.y = clamp(velocity.y, gravity, jump_impolse)
+	print(gravity)
+	print(velocity.y)
 	
 func jump():
 	if Input.is_action_just_pressed('jump') and is_on_floor():

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://w38m1qgff8sl"]
+
+[ext_resource type="Texture2D" uid="uid://cfpbv8go15wko" path="res://addons/kenney_prototype_textures/dark/texture_13.png" id="1_8rhee"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7xx0"]
+albedo_texture = ExtResource("1_8rhee")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b7e5v"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b1jyt"]
+points = PackedVector3Array(-0.507937, -0.507937, -0.00793651, 0.507937, 0.507937, 0.00793651, 0.507937, 0.507937, -0.00793651, -0.507937, 0.507937, 0.00793651, 0.507937, -0.507937, 0.00793651, 0.507937, -0.507937, -0.00793651, -0.507937, 0.507937, -0.00793651, -0.507937, -0.507937, 0.00793651)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_f7xx0")
+mesh = SubResource("QuadMesh_b7e5v")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_b1jyt")

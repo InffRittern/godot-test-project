@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2ncm5mj3n6fe"]
+[gd_scene load_steps=7 format=3 uid="uid://d2ncm5mj3n6fe"]
 
-[ext_resource type="Texture2D" uid="uid://cfpbv8go15wko" path="res://addons/kenney_prototype_textures/dark/texture_13.png" id="1_0vts4"]
 [ext_resource type="PackedScene" uid="uid://bruos3622oae5" path="res://characters/Player.tscn" id="2_4631q"]
+[ext_resource type="PackedScene" uid="uid://w38m1qgff8sl" path="res://environment/floor.tscn" id="2_k8b0m"]
+[ext_resource type="PackedScene" uid="uid://d2dlwft2wkdmr" path="res://environment/cube.tscn" id="3_ipxys"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8v7mw"]
 sky_top_color = Color(0.337255, 0.364706, 0.901961, 1)
@@ -17,14 +18,6 @@ sky = SubResource("Sky_4xfim")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7xx0"]
-albedo_texture = ExtResource("1_0vts4")
-
-[sub_resource type="QuadMesh" id="QuadMesh_b7e5v"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_soj0w"]
-data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
-
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -34,15 +27,17 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_l6p72")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0.272808, 0, -0.00519794)
-material_override = SubResource("StandardMaterial3D_f7xx0")
-mesh = SubResource("QuadMesh_b7e5v")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_soj0w")
-
 [node name="Player" parent="." instance=ExtResource("2_4631q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -3)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("2_k8b0m")]
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("2_k8b0m")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, -50)
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("2_k8b0m")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 50, 0, 0)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("3_ipxys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
+freeze_mode = 1
