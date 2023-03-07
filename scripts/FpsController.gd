@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity_vector = ProjectSettings.get_setting('physics/3d/default_gravity_vector')
 @export var max_speed: float = 10
 @export var acceleration: float = 70
 @export var friction: float = 60
@@ -79,8 +80,9 @@ func apply_friction(direction: Vector3, delta: float):
 			velocity.z = velocity.move_toward(Vector3.ZERO, air_friction * delta).z
 			
 func apply_gravity(delta: float):
+	# TODO gravity hack need fix
 	velocity.y += -gravity * delta
-	velocity.y = clamp(velocity.y, gravity, jump_impolse)
+	velocity.y = clamp(velocity.y, -gravity, jump_impolse)
 	print(gravity)
 	print(velocity.y)
 	

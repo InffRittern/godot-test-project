@@ -86,7 +86,6 @@ look_right={
 
 3d/run_on_separate_thread=true
 3d/physics_engine="GodotPhysics3D"
-3d/default_gravity=9.8
 
 [rendering]
 
