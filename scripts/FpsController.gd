@@ -27,19 +27,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			head.rotate_y(-event.relative.x * mouse_sensitivity)
-			camera.rotate_x(-event.relative.y * mouse_sensitivity)
+			rotate_camera(event.relative, mouse_sensitivity)
 			
-func apply_controller_rotation():
-	var axis_vector = Vector2.ZERO
-	
-	axis_vector.x = Input.get_action_strength('look_right') - Input.get_action_strength('look_left')
-	axis_vector.y = Input.get_action_strength('look_down') - Input.get_action_strength('look_up')
-	
-	if InputEventJoypadMotion:
-		rotate_y(deg_to_rad(-axis_vector.x) * controller_sensitivity)
-		head.rotate_x(deg_to_rad(-axis_vector.y) * controller_sensitivity)
-
+			
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
@@ -48,8 +38,22 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	jump()
 	apply_controller_rotation()
-	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
 	move_and_slide()
+	
+func apply_controller_rotation():
+	var axis_vector = Input.get_vector('look_left', 'look_right', 'look_down', 'look_up')
+	if InputEventJoypadMotion:
+		rotate_camera(axis_vector, controller_sensitivity, true)
+		
+		
+func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false):
+	if is_gamepad:
+		head.rotate_y(deg_to_rad(-input.x) * sensitivity)
+		camera.rotate_x(deg_to_rad(input.y) * sensitivity)
+	else:
+		head.rotate_y(-input.x * sensitivity)
+		camera.rotate_x(-input.y * sensitivity)
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
 	
 	
 func get_input_vector():
@@ -75,9 +79,10 @@ func apply_friction(direction: Vector3, delta: float):
 			velocity.z = velocity.move_toward(Vector3.ZERO, air_friction * delta).z
 			
 func apply_gravity(delta: float):
-	velocity.y += gravity * delta
+	velocity.y += -gravity * delta
 	velocity.y = clamp(velocity.y, gravity, jump_impolse)
-	
+	print(gravity)
+	print(velocity.y)
 	
 func jump():
 	if Input.is_action_just_pressed('jump') and is_on_floor():
