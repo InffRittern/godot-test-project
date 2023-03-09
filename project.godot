@@ -21,6 +21,7 @@ file_logging/enable_file_logging=true
 
 [display]
 
+window/size/mode=2
 window/vsync/vsync_mode=0
 
 [input]
