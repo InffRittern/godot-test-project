@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bruos3622oae5"]
+[gd_scene load_steps=6 format=3 uid="uid://7ijk8bwgo3t6"]
 
-[ext_resource type="Script" path="res://scripts/FpsController.gd" id="1_obgda"]
+[ext_resource type="Script" path="res://scripts/fps_contoller.gd" id="1_isn6q"]
+[ext_resource type="PackedScene" uid="uid://dudo2m8d87xnd" path="res://GUI/Profiler.tscn" id="2_c5857"]
+[ext_resource type="PackedScene" uid="uid://bo82mv1tm3wc1" path="res://GUI/debug_menu.tscn" id="3_c2t8w"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ngc46"]
 
@@ -9,7 +11,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0345663, 0)
-script = ExtResource("1_obgda")
+script = ExtResource("1_isn6q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ngc46")
@@ -22,5 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="RayCast3D" type="RayCast3D" parent="Head"]
-target_position = Vector3(0, 0, -2)
+[node name="Profiler" parent="Head/Camera3D" instance=ExtResource("2_c5857")]
+
+[node name="debug_menu" parent="." instance=ExtResource("3_c2t8w")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dudo2m8d87xnd"]
+
+[ext_resource type="Script" path="res://scripts/GUI/Profiler.gd" id="1_tbyq2"]
+
+[node name="Profiler" type="CanvasLayer"]
+script = ExtResource("1_tbyq2")
+
+[node name="DEBUG" type="VBoxContainer" parent="."]
+offset_right = 132.0
+offset_bottom = 86.0
+
+[node name="fps" type="Label" parent="DEBUG"]
+layout_mode = 2
+text = "FPS"
+
+[node name="memory" type="Label" parent="DEBUG"]
+layout_mode = 2
+text = "Memory"
