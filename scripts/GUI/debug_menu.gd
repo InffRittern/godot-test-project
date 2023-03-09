@@ -23,3 +23,8 @@ func _on_spin_box_value_changed(value):
 func _on_check_button_toggled(button_pressed):
 	Engine.set_max_fps(max_fps if button_pressed else 0)
 	pass # Replace with function body.
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
