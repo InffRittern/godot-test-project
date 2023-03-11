@@ -1,16 +1,17 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2wmnwl5bfbgl"]
+[gd_scene load_steps=36 format=3 uid="uid://b2wmnwl5bfbgl"]
 
 [ext_resource type="Script" path="res://characters/Player/scripts/Player.gd" id="1_rilx3"]
 [ext_resource type="PackedScene" uid="uid://b7kp3mfidcvw" path="res://characters/Player/Import/player_legs.glb" id="3_3d6cs"]
 [ext_resource type="PackedScene" uid="uid://dudo2m8d87xnd" path="res://GUI/Profiler.tscn" id="4_75f0q"]
-[ext_resource type="Animation" path="res://animation/player/player_anim_turn_left.anim" id="4_tj4jg"]
+[ext_resource type="Animation" uid="uid://cdppfg6hbrpvo" path="res://animation/player/player_anim_turn_left.anim" id="4_tj4jg"]
 [ext_resource type="PackedScene" uid="uid://dv1ko33mdk4tf" path="res://characters/Player/Import/player_arms.glb" id="4_ykndx"]
 [ext_resource type="PackedScene" uid="uid://bo82mv1tm3wc1" path="res://GUI/debug_menu.tscn" id="5_ljmk1"]
 [ext_resource type="AnimationLibrary" uid="uid://byh8tav6ah3sa" path="res://animation/import/player_turn_left.glb" id="5_trbeh"]
-[ext_resource type="Animation" path="res://animation/player/player_anim_turn_right.anim" id="5_xh37r"]
-[ext_resource type="Animation" path="res://animation/player/player_anim_walking.res" id="6_m5iw0"]
+[ext_resource type="Animation" uid="uid://cje2akrbwttu0" path="res://animation/player/player_anim_turn_right.anim" id="5_xh37r"]
+[ext_resource type="Animation" uid="uid://cr3vfvq02dmum" path="res://animation/player/player_anim_walking.res" id="6_m5iw0"]
 [ext_resource type="AnimationLibrary" uid="uid://2r5ygmt8arx2" path="res://animation/import/player_turn_right.glb" id="6_v4xfk"]
-[ext_resource type="Animation" uid="uid://c61tjwet0g2m1" path="res://animation/player/player_anim_idle.res" id="7_hsama"]
+[ext_resource type="Animation" uid="uid://b4ggt0oqx2ro3" path="res://animation/player/player_anim_idle.res" id="7_hsama"]
+[ext_resource type="Animation" uid="uid://cwqp1ilfsnw0y" path="res://animation/player/player_anim_jump.res" id="8_an1t4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_27cy5"]
 radius = 0.26
@@ -19,6 +20,7 @@ height = 1.8
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqw71"]
 _data = {
 "player_anim_idle": ExtResource("7_hsama"),
+"player_anim_jump": ExtResource("8_an1t4"),
 "player_anim_turn_left": ExtResource("4_tj4jg"),
 "player_anim_turn_right": ExtResource("5_xh37r"),
 "player_anim_walking": ExtResource("6_m5iw0")
@@ -101,7 +103,7 @@ states/End/position = Vector2(1288, 93)
 "states/Player Animationsplayer_anim_walking/position" = Vector2(777, 93)
 states/Start/position = Vector2(103, 93)
 transitions = ["Start", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_2xytb"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_p0gxj"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_cjjve"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_tcwmg"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_38g48"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_hb7md"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_14wtm"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_1ofs7"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_w6tf5"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_vqce3"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_cdhpg")]
-graph_offset = Vector2(-7, -277)
+graph_offset = Vector2(-61, -168)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1dcqm"]
 
