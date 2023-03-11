@@ -15,6 +15,7 @@ extends CharacterBody3D
 #nodes
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
+@onready var body  := $Body
 
 
 func _ready():
@@ -48,6 +49,7 @@ func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false)
 		head.rotate_y(-input.x * sensitivity)
 		camera.rotate_x(-input.y * sensitivity)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
+	body.rotation.y = head.rotation.y + deg_to_rad(180)
 	
 	
 func get_input_vector():
