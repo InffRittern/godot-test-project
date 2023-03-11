@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyb0hwpsb0an"]
+[gd_scene load_steps=9 format=3 uid="uid://d2ncm5mj3n6fe"]
 
 [ext_resource type="PackedScene" uid="uid://w38m1qgff8sl" path="res://environment/floor.tscn" id="2_k8b0m"]
 [ext_resource type="PackedScene" uid="uid://d2dlwft2wkdmr" path="res://environment/cube.tscn" id="3_ipxys"]
 [ext_resource type="PackedScene" uid="uid://b2wmnwl5bfbgl" path="res://characters/Player/Player.tscn" id="3_whmjy"]
+[ext_resource type="PackedScene" uid="uid://b7kp3mfidcvw" path="res://characters/Player/Import/player_legs.glb" id="4_6euns"]
+[ext_resource type="PackedScene" uid="uid://dv1ko33mdk4tf" path="res://characters/Player/Import/player_arms.glb" id="5_bvyr1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8v7mw"]
 sky_top_color = Color(0.337255, 0.364706, 0.901961, 1)
@@ -41,3 +43,8 @@ freeze_mode = 1
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("3_whmjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -21)
+
+[node name="player_legs" parent="." instance=ExtResource("4_6euns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63227, 0, -1.2166)
+
+[node name="player_arms" parent="." instance=ExtResource("5_bvyr1")]
