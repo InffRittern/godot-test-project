@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2wmnwl5bfbgl"]
+[gd_scene load_steps=20 format=3 uid="uid://b2wmnwl5bfbgl"]
 
 [ext_resource type="Script" path="res://characters/Player/scripts/Player.gd" id="1_rilx3"]
 [ext_resource type="PackedScene" uid="uid://b7kp3mfidcvw" path="res://characters/Player/Import/player_legs.glb" id="3_3d6cs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Animation" uid="uid://cje2akrbwttu0" path="res://animation/player/player_anim_turn_right.anim" id="5_xh37r"]
 [ext_resource type="Animation" uid="uid://cr3vfvq02dmum" path="res://animation/player/player_anim_walking.res" id="6_m5iw0"]
 [ext_resource type="AnimationLibrary" uid="uid://2r5ygmt8arx2" path="res://animation/import/player_turn_right.glb" id="6_v4xfk"]
+[ext_resource type="Animation" uid="uid://b4ggt0oqx2ro3" path="res://animation/player/player_anim_idle.res" id="7_hsama"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_27cy5"]
 radius = 0.26
@@ -17,6 +18,7 @@ height = 1.8
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aqw71"]
 _data = {
+"player_anim_idle": ExtResource("7_hsama"),
 "player_anim_turn_left": ExtResource("4_tj4jg"),
 "player_anim_turn_right": ExtResource("5_xh37r"),
 "player_anim_walking": ExtResource("6_m5iw0")
