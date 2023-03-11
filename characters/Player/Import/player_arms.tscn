@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dphi167sy13py"]
+[gd_scene load_steps=9 format=3 uid="uid://cbexnicivb5m8"]
 
 [ext_resource type="Texture2D" uid="uid://d2bkdarjppgy0" path="res://characters/Player/Import/player_arms_male_casualsuit01_Khaki.png" id="1_e3uig"]
 [ext_resource type="Texture2D" uid="uid://dfhg71rmeve2" path="res://characters/Player/Import/player_arms_male_casualsuit01_normal.png" id="2_wie0e"]

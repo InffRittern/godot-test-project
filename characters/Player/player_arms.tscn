@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://0p715itl6fdm"]
+
+[ext_resource type="PackedScene" uid="uid://dv1ko33mdk4tf" path="res://characters/Player/Import/player_arms.glb" id="1_006rc"]
+[ext_resource type="AnimationLibrary" uid="uid://gg6yanqikuut" path="res://animation/import/player_anim_walking.glb" id="2_124wy"]
+
+[node name="player_arms" instance=ExtResource("1_006rc")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-0.130535, -0.0553257, -0.421908, 0.895485)
+bones/3/rotation = Quaternion(0.255798, 0.0878416, -0.210944, 0.939337)
+bones/5/rotation = Quaternion(0.312103, 0.302214, -0.218862, 0.873704)
+bones/7/rotation = Quaternion(0.134073, 0.26194, 0.0239856, 0.955425)
+bones/34/rotation = Quaternion(-0.185963, 0.0524234, 0.445859, 0.874002)
+bones/36/rotation = Quaternion(0.0438682, -0.210147, -0.0433878, 0.975721)
+bones/37/rotation = Quaternion(0.316367, -0.114769, 0.131192, 0.932485)
+bones/39/rotation = Quaternion(0.147475, -0.252996, 0.0648014, 0.953963)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"player_anim_walking": ExtResource("2_124wy")
+}
