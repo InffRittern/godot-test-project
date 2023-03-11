@@ -15,6 +15,8 @@ extends CharacterBody3D
 #nodes
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
+@onready var legs_animator := $Head/Legs/LegsAnimationTree
+@onready var arms_animator := $Head/Arms/ArmsAnimationTree
 
 
 func _ready():
