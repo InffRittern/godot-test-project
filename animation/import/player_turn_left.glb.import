@@ -30,7 +30,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "animations": {
-"player_legs_turn_left": {
+"player_turn_left": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "res://animation/player/player_anim_turn_left.res",
