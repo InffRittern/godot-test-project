@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2wmnwl5bfbgl"]
+[gd_scene load_steps=33 format=3 uid="uid://b2wmnwl5bfbgl"]
 
 [ext_resource type="Script" path="res://characters/Player/scripts/Player.gd" id="1_rilx3"]
 [ext_resource type="PackedScene" uid="uid://b7kp3mfidcvw" path="res://characters/Player/Import/player_legs.glb" id="3_3d6cs"]
@@ -26,86 +26,75 @@ _data = {
 "player_anim_walking": ExtResource("6_m5iw0")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uejct"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0arct"]
+animation = &"Player Animations/player_anim_jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ccqak"]
 animation = &"Player Animations/player_anim_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bsjcd"]
-animation = &"Player Animations/player_anim_turn_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uy5et"]
-animation = &"Player Animations/player_anim_turn_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtt70"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1kb75"]
 animation = &"Player Animations/player_anim_walking"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ofs7"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_left"
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qh1pu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ccqak")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1kb75")
+blend_point_1/pos = Vector2(0, -1)
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6tf5"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_qp4xt"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vqce3"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xnuvy"]
+animation = &"Player Animations/player_anim_idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cdhpg"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_right"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l76yj"]
+animation = &"Player Animations/player_anim_turn_left"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jw1us"]
-advance_mode = 2
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uuc8u"]
+animation = &"Player Animations/player_anim_turn_right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0gxj"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"walk"
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0my7y"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_xnuvy")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_l76yj")
+blend_point_1/pos = -1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_uuc8u")
+blend_point_2/pos = 1.0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cjjve"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_qacpe"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcwmg"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_right"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wncgd"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_38g48"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"walk"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lq6qf"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hb7md"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"walk"
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_5seuy"]
+xfade_time = 0.2
+input_0/name = "sanding"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "movement"
+input_1/auto_advance = false
+input_1/reset = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_14wtm"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_left"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wr1o"]
-states/End/position = Vector2(1288, 93)
-"states/Player Animationsplayer_anim_idle/node" = SubResource("AnimationNodeAnimation_uejct")
-"states/Player Animationsplayer_anim_idle/position" = Vector2(237, 106)
-"states/Player Animationsplayer_anim_turn_left/node" = SubResource("AnimationNodeAnimation_bsjcd")
-"states/Player Animationsplayer_anim_turn_left/position" = Vector2(686, 267)
-"states/Player Animationsplayer_anim_turn_right/node" = SubResource("AnimationNodeAnimation_uy5et")
-"states/Player Animationsplayer_anim_turn_right/position" = Vector2(686, -67)
-"states/Player Animationsplayer_anim_walking/node" = SubResource("AnimationNodeAnimation_gtt70")
-"states/Player Animationsplayer_anim_walking/position" = Vector2(864, 93)
-states/Start/position = Vector2(-142, 100)
-transitions = ["Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_1ofs7"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_w6tf5"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_vqce3"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_cdhpg"), "Start", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_jw1us"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_p0gxj"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_cjjve"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_tcwmg"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_38g48"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_hb7md"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_14wtm")]
-graph_offset = Vector2(-56, -85.0158)
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1dcqm"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kp7yi"]
+graph_offset = Vector2(-463.263, -102.026)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_0arct")
+nodes/Animation/position = Vector2(-380, 500)
+nodes/Movement/node = SubResource("AnimationNodeBlendSpace2D_qh1pu")
+nodes/Movement/position = Vector2(-360, 260)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_qp4xt")
+nodes/OneShot/position = Vector2(580, 300)
+nodes/Rotating/node = SubResource("AnimationNodeBlendSpace1D_0my7y")
+nodes/Rotating/position = Vector2(-340, 60)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_lq6qf")
+nodes/TimeScale/position = Vector2(-100, 280)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_qacpe")
+"nodes/TimeScale 2/position" = Vector2(-100, 80)
+"nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_wncgd")
+"nodes/TimeScale 3/position" = Vector2(100, 480)
+nodes/move_rotation_transition/node = SubResource("AnimationNodeTransition_5seuy")
+nodes/move_rotation_transition/position = Vector2(260, 140)
+nodes/output/position = Vector2(840, 160)
+node_connections = [&"output", 0, &"OneShot", &"TimeScale", 0, &"Movement", &"TimeScale 2", 0, &"Rotating", &"TimeScale 3", 0, &"Animation", &"OneShot", 0, &"move_rotation_transition", &"OneShot", 1, &"TimeScale 3", &"move_rotation_transition", 0, &"TimeScale 2", &"move_rotation_transition", 1, &"TimeScale"]
 
 [sub_resource type="Animation" id="Animation_6yuwj"]
 resource_name = "walking_anim"
@@ -280,14 +269,19 @@ libraries = {
 }
 
 [node name="LegsAnimationTree" type="AnimationTree" parent="Head/Legs"]
-tree_root = SubResource("AnimationNodeStateMachine_3wr1o")
+tree_root = SubResource("AnimationNodeBlendTree_kp7yi")
 anim_player = NodePath("../LegsAnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1dcqm")
-parameters/conditions/idle = false
-parameters/conditions/turn_left = false
-parameters/conditions/turn_right = false
-parameters/conditions/walk = false
+parameters/Movement/blend_position = Vector2(-0.444699, -0.343899)
+parameters/OneShot/active = false
+parameters/OneShot/request = 0
+parameters/Rotating/blend_position = 0.0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+"parameters/TimeScale 3/scale" = 1.0
+parameters/move_rotation_transition/current_state = "movement"
+parameters/move_rotation_transition/transition_request = ""
+parameters/move_rotation_transition/current_index = 1
 
 [node name="Arms" parent="Head" instance=ExtResource("4_ykndx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.58491, 0.187043)

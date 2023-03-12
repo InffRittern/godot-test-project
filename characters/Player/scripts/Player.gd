@@ -15,8 +15,10 @@ extends CharacterBody3D
 #nodes
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
-@onready var legs_animator := $Head/Legs/LegsAnimationTree
-@onready var arms_animator := $Head/Arms/ArmsAnimationTree
+@onready var legs_animator : AnimationTree = $Head/Legs/LegsAnimationTree
+@onready var arms_animator : AnimationTree = $Head/Arms/ArmsAnimationTree
+
+var rotate_angle: float = 0
 
 
 func _ready():
@@ -29,11 +31,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta):
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
+	apply_animation(input_vector)
 	apply_movement(direction, delta)
 	apply_friction(direction, delta)
 	apply_gravity(delta)
 	jump()
 	apply_controller_rotation()
+	
 	move_and_slide()
 	
 func apply_controller_rotation():
@@ -43,6 +47,7 @@ func apply_controller_rotation():
 		
 		
 func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false):
+	var angle_befor = head.rotation.y
 	if is_gamepad:
 		head.rotate_y(deg_to_rad(-input.x) * sensitivity)
 		camera.rotate_x(deg_to_rad(input.y) * sensitivity)
@@ -50,9 +55,11 @@ func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false)
 		head.rotate_y(-input.x * sensitivity)
 		camera.rotate_x(-input.y * sensitivity)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
+	rotate_angle = head.rotation.y - angle_befor
 	
 	
-func get_input_vector():
+	
+func get_input_vector() -> Vector2:
 	var input_vector = Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	return input_vector.normalized() if input_vector.length() > 1 else input_vector
 	
@@ -84,6 +91,13 @@ func jump():
 		velocity.y = jump_impolse
 	if Input.is_action_just_released('jump') and velocity.y > jump_impolse / 2:
 		velocity.y = jump_impolse / 2
+
+func apply_animation(input: Vector2):
+	legs_animator.set('parameters/move_rotation_transition/current_index', 0 if input == Vector2.ZERO else 1)
+	legs_animator.set('parameters/Rotating/blend_position', rotate_angle)
+	legs_animator.set('parameters/Movement/blend_position', input)
+	legs_animator.set('parameters/OneShot/request', !is_on_floor())
+	print('rotate angle: ', rotate_angle)
 	
 
 	

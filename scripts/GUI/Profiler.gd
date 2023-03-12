@@ -17,6 +17,7 @@ func _unhandled_input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var _erlaps_time = delta
 	fps.text = 'FPS: ' + str(Performance.get_monitor(Performance.TIME_FPS))
 	memory.text = 'Memory static: ' + str(round(Performance.get_monitor(Performance.MEMORY_STATIC)/1024/1024)) + ' MB'
 
