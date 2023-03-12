@@ -38,7 +38,27 @@ animation = &"Player Animations/player_anim_turn_right"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtt70"]
 animation = &"Player Animations/player_anim_walking"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2xytb"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ofs7"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_left"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6tf5"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vqce3"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cdhpg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"turn_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jw1us"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p0gxj"]
@@ -71,39 +91,19 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"turn_left"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ofs7"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_left"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6tf5"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vqce3"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cdhpg"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"turn_right"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3wr1o"]
 states/End/position = Vector2(1288, 93)
 "states/Player Animationsplayer_anim_idle/node" = SubResource("AnimationNodeAnimation_uejct")
-"states/Player Animationsplayer_anim_idle/position" = Vector2(364, 93)
+"states/Player Animationsplayer_anim_idle/position" = Vector2(237, 106)
 "states/Player Animationsplayer_anim_turn_left/node" = SubResource("AnimationNodeAnimation_bsjcd")
 "states/Player Animationsplayer_anim_turn_left/position" = Vector2(686, 267)
 "states/Player Animationsplayer_anim_turn_right/node" = SubResource("AnimationNodeAnimation_uy5et")
 "states/Player Animationsplayer_anim_turn_right/position" = Vector2(686, -67)
 "states/Player Animationsplayer_anim_walking/node" = SubResource("AnimationNodeAnimation_gtt70")
-"states/Player Animationsplayer_anim_walking/position" = Vector2(777, 93)
-states/Start/position = Vector2(103, 93)
-transitions = ["Start", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_2xytb"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_p0gxj"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_cjjve"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_tcwmg"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_38g48"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_hb7md"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_14wtm"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_1ofs7"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_w6tf5"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_vqce3"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_cdhpg")]
-graph_offset = Vector2(-61, -168)
+"states/Player Animationsplayer_anim_walking/position" = Vector2(782, 93)
+states/Start/position = Vector2(-142, 100)
+transitions = ["Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_1ofs7"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_w6tf5"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_vqce3"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_cdhpg"), "Start", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_jw1us"), "Player Animationsplayer_anim_idle", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_p0gxj"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_idle", SubResource("AnimationNodeStateMachineTransition_cjjve"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_right", SubResource("AnimationNodeStateMachineTransition_tcwmg"), "Player Animationsplayer_anim_turn_right", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_38g48"), "Player Animationsplayer_anim_turn_left", "Player Animationsplayer_anim_walking", SubResource("AnimationNodeStateMachineTransition_hb7md"), "Player Animationsplayer_anim_walking", "Player Animationsplayer_anim_turn_left", SubResource("AnimationNodeStateMachineTransition_14wtm")]
+graph_offset = Vector2(-553, -141)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1dcqm"]
 
@@ -274,6 +274,7 @@ fov = 60.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.86357e-08, -1.58491, 0.40021)
 
 [node name="LegsAnimationPlayer" type="AnimationPlayer" parent="Head/Legs"]
+autoplay = "Player Animations/player_anim_walking"
 libraries = {
 "Player Animations": SubResource("AnimationLibrary_aqw71")
 }

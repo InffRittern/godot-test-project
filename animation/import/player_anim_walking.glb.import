@@ -1,15 +1,15 @@
 [remap]
 
-importer="animation_library"
+importer="scene"
 importer_version=1
-type="AnimationLibrary"
-uid="uid://gg6yanqikuut"
-path="res://.godot/imported/player_anim_walking.glb-aca445ec394dd6eeaf4a1833df4dcd02.res"
+type="PackedScene"
+uid="uid://dr8er1lg8oj52"
+path="res://.godot/imported/player_anim_walking.glb-aca445ec394dd6eeaf4a1833df4dcd02.scn"
 
 [deps]
 
 source_file="res://animation/import/player_anim_walking.glb"
-dest_files=["res://.godot/imported/player_anim_walking.glb-aca445ec394dd6eeaf4a1833df4dcd02.res"]
+dest_files=["res://.godot/imported/player_anim_walking.glb-aca445ec394dd6eeaf4a1833df4dcd02.scn"]
 
 [params]
 
@@ -33,7 +33,7 @@ _subresources={
 "walking_anim": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://animation/player/walking.res",
+"save_to_file/path": "res://animation/player/player_anim_walking.res",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
