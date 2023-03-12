@@ -55,6 +55,7 @@ func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false)
 		head.rotate_y(-input.x * sensitivity)
 		camera.rotate_x(-input.y * sensitivity)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
+	head.rotate.y = wrapf(head.rotate.y, 0, 360)
 	rotate_angle = head.rotation.y - angle_befor
 	
 	
