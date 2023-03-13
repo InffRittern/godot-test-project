@@ -24,12 +24,15 @@ extends CharacterBody3D
 
 var input_vector := Vector2.ZERO
 var player_direction := Vector3.ZERO
+var lastEular := 0.0
+var rotate_anim:= 0.0
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	legs_animator.set('parameters/conditions/move', true)
 	camera.make_current()
+	lastEular = head.get_global_rotation_degrees().y
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -40,8 +43,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			camera.make_current()
 		
-
 func _physics_process(delta):
+	get_rotation_angle()
 	get_input_vector()
 	get_direction()
 	apply_movement(delta)
@@ -51,6 +54,15 @@ func _physics_process(delta):
 	apply_controller_rotation()
 	move_and_slide()
 	
+	
+func get_rotation_angle():
+	var angle = head.get_global_rotation_degrees().y - lastEular
+	rotate_anim = clamp(angle, -1, 1)
+	print(rotate_anim)
+	lastEular = head.get_global_rotation_degrees().y
+	
+
+
 func apply_controller_rotation():
 	var axis_vector = Input.get_vector('look_left', 'look_right', 'look_down', 'look_up')
 	if InputEventJoypadMotion:
@@ -60,15 +72,6 @@ func apply_controller_rotation():
 func  rotate_camera_by_mouse(input: InputEventMouseMotion, sensitivity: float):
 	head.rotate_y(-input.relative.x * sensitivity)
 	camera.rotate_x(-input.relative.y * sensitivity)
-	var rotate_anim = 0
-	if -input.relative.x > 0:
-		rotate_anim = -1
-	
-	if -input.relative.x < 0:
-		rotate_anim = 1
-	
-	if -input.relative.x == 0:
-		rotate_anim = 0
 	
 	legs_animator.set('parameters/Movement/rotate_movement/blend_position', rotate_anim)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
@@ -77,15 +80,14 @@ func  rotate_camera_by_mouse(input: InputEventMouseMotion, sensitivity: float):
 func rotate_camera_by_gamepad(input: Vector2, sensitivity: float):
 	head.rotate_y(deg_to_rad(-input.x) * sensitivity)
 	camera.rotate_x(deg_to_rad(input.y) * sensitivity)
-	var rotate_anim = -(input.normalized()).x
-	legs_animator.set('parameters/Movement/rotate_movement/blend_position', rotate_anim)
+	legs_animator.set('parameters/Movement/rotate_movement/blend_position', -(input.normalized()).x)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
 	
 func get_input_vector():
 	input_vector = Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	if input_vector.length() > 1:
 		input_vector.normalized()
-	legs_animator.set('parameters/Movement/move_rotate/current_index', 0 if input_vector == Vector2.ZERO else 1)
+	legs_animator.set('parameters/Movement/move_rotate/current_state', 'standing' if input_vector == Vector2.ZERO else 'movement')
 	legs_animator.set('parameters/Movement/BaseMovement/blend_position', input_vector)
 	
 func get_direction():
