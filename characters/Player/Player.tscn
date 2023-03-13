@@ -276,11 +276,11 @@ shape = SubResource("CapsuleShape3D_27cy5")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.601, 0.0328927)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Camera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.223, 0)
 fov = 60.0
 
-[node name="Profiler" parent="Head/Camera3D" instance=ExtResource("4_75f0q")]
+[node name="Profiler" parent="Head/Camera" instance=ExtResource("4_75f0q")]
 
 [node name="Legs" parent="Head" instance=ExtResource("3_3d6cs")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.86357e-08, -1.58491, 0.40021)
@@ -325,3 +325,10 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_22gof")
 
 [node name="debug_menu" parent="." instance=ExtResource("5_ljmk1")]
+
+[node name="DebugCamera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00119309, 1.58761, -3.0005)
+current = true
+fov = 60.0
+
+[node name="Profiler" parent="DebugCamera" instance=ExtResource("4_75f0q")]
