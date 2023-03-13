@@ -15,29 +15,32 @@ extends CharacterBody3D
 #nodes
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
-@onready var legs_animator : AnimationTree = $Head/Legs/LegsAnimationTree
+@onready var legs_animator : AnimationTree = %LegsAnimationTree
 @onready var arms_animator : AnimationTree = $Head/Arms/ArmsAnimationTree
 
-var rotate_angle: float = 0
+
+#private
+
+var input_vector := Vector2.ZERO
+var player_direction := Vector3.ZERO
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	legs_animator.set('parameters/conditions/move', true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_camera(event.relative, mouse_sensitivity)
 
 func _physics_process(delta):
-	var input_vector = get_input_vector()
-	var direction = get_direction(input_vector)
-	apply_animation(input_vector)
-	apply_movement(direction, delta)
-	apply_friction(direction, delta)
+	get_input_vector()
+	get_direction()
+	apply_movement(delta)
+	apply_friction(delta)
 	apply_gravity(delta)
 	jump()
 	apply_controller_rotation()
-	
 	move_and_slide()
 	
 func apply_controller_rotation():
@@ -47,37 +50,41 @@ func apply_controller_rotation():
 		
 		
 func rotate_camera(input: Vector2, sensitivity: float, is_gamepad: bool = false):
-	var angle_befor = head.rotation.y
 	if is_gamepad:
 		head.rotate_y(deg_to_rad(-input.x) * sensitivity)
 		camera.rotate_x(deg_to_rad(input.y) * sensitivity)
 	else:
+		input.normalized()
 		head.rotate_y(-input.x * sensitivity)
 		camera.rotate_x(-input.y * sensitivity)
+		print(-input.x)
+		legs_animator.set('parameters/Movement/rotate_movement/blend_position', -input.x)
 	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_angle_bottom), deg_to_rad(camera_angle_up))
-	head.rotate.y = wrapf(head.rotate.y, 0, 360)
-	rotate_angle = head.rotation.y - angle_befor
 	
+func get_input_vector():
+	input_vector = Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
+	if input_vector.length() > 1:
+		input_vector.normalized()
+	print(input_vector)
+	legs_animator.set('parameters/Movement/move_rotate/current_index', 0 if input_vector == Vector2.ZERO else 1)
+	legs_animator.set('parameters/Movement/BaseMovement/blend_position', input_vector)
 	
-	
-func get_input_vector() -> Vector2:
-	var input_vector = Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
-	return input_vector.normalized() if input_vector.length() > 1 else input_vector
-	
-func get_direction(input_vector: Vector2):
+func get_direction():
 	var direction = Vector3.ZERO
 	direction = (input_vector.x * head.transform.basis.x) + (input_vector.y * head.transform.basis.z)
-	return direction.normalized()
+	player_direction = direction.normalized()
 	
-func apply_movement(direction: Vector3, delta: float):
-	if direction != Vector3.ZERO:
-		velocity.x = velocity.move_toward(direction * max_speed, acceleration * delta).x
-		velocity.z = velocity.move_toward(direction * max_speed, acceleration * delta).z
+func apply_movement(delta: float):
+	if player_direction != Vector3.ZERO:
+		velocity.x = velocity.move_toward(player_direction * max_speed, acceleration * delta).x
+		velocity.z = velocity.move_toward(player_direction * max_speed, acceleration * delta).z
 		
-func apply_friction(direction: Vector3, delta: float):
-	if direction == Vector3.ZERO:
+func apply_friction(delta: float):
+	if player_direction == Vector3.ZERO:
 		if is_on_floor():
 			velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+			legs_animator.set('parameters/conditions/jump', false)
+			legs_animator.set('parameters/conditions/move', true)
 		else:
 			velocity.x = velocity.move_toward(Vector3.ZERO, air_friction * delta).x
 			velocity.z = velocity.move_toward(Vector3.ZERO, air_friction * delta).z
@@ -90,15 +97,7 @@ func apply_gravity(delta: float):
 func jump():
 	if Input.is_action_just_pressed('jump') and is_on_floor():
 		velocity.y = jump_impolse
+		legs_animator.set('parameters/conditions/jump', true)
 	if Input.is_action_just_released('jump') and velocity.y > jump_impolse / 2:
 		velocity.y = jump_impolse / 2
 
-func apply_animation(input: Vector2):
-	legs_animator.set('parameters/move_rotation_transition/current_index', 0 if input == Vector2.ZERO else 1)
-	legs_animator.set('parameters/Rotating/blend_position', rotate_angle)
-	legs_animator.set('parameters/Movement/blend_position', input)
-	legs_animator.set('parameters/OneShot/request', !is_on_floor())
-	print('rotate angle: ', rotate_angle)
-	
-
-	
