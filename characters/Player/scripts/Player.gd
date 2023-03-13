@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.make_current()
 		
 func _physics_process(delta):
-	get_rotation_angle()
+	get_rotation_angle(delta)
 	get_input_vector()
 	get_direction()
 	apply_movement(delta)
@@ -55,9 +55,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-func get_rotation_angle():
-	var angle = head.get_global_rotation_degrees().y - lastEular
-	rotate_anim = clamp(angle, -1, 1)
+func get_rotation_angle(delta):
+	var angle = (head.get_global_rotation_degrees().y - lastEular)/delta
+	rotate_anim = clamp(-angle/20, -1, 1)
 	print(rotate_anim)
 	lastEular = head.get_global_rotation_degrees().y
 	

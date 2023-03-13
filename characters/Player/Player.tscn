@@ -79,19 +79,19 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_ldt4d")
 blend_point_2/pos = 1.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ctypg"]
-graph_offset = Vector2(-850, 62)
+graph_offset = Vector2(-827.442, 6.49535)
 nodes/BaseMovement/node = SubResource("AnimationNodeBlendSpace2D_f28g7")
 nodes/BaseMovement/position = Vector2(-626.667, 200)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_kong2")
 nodes/TimeScale/position = Vector2(-386.667, 173.333)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_xghq8")
-"nodes/TimeScale 2/position" = Vector2(-386.667, 386.667)
+"nodes/TimeScale 2/position" = Vector2(-40, 300)
 nodes/move_rotate/node = SubResource("AnimationNodeTransition_l6a7f")
-nodes/move_rotate/position = Vector2(-186.667, 106.667)
-nodes/output/position = Vector2(13.3333, 106.667)
+nodes/move_rotate/position = Vector2(-140, 120)
+nodes/output/position = Vector2(180, 80)
 nodes/rotate_movement/node = SubResource("AnimationNodeBlendSpace1D_mj47d")
 nodes/rotate_movement/position = Vector2(-626.667, 413.333)
-node_connections = [&"output", 0, &"move_rotate", &"TimeScale", 0, &"BaseMovement", &"TimeScale 2", 0, &"rotate_movement", &"move_rotate", 0, &"TimeScale 2", &"move_rotate", 1, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale 2", &"TimeScale", 0, &"BaseMovement", &"TimeScale 2", 0, &"rotate_movement", &"move_rotate", 1, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4p6xq"]
 animation = &"Player Animations/player_anim_jump"
@@ -110,12 +110,12 @@ advance_condition = &"move"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_316br"]
 states/Movement/node = SubResource("AnimationNodeBlendTree_ctypg")
-states/Movement/position = Vector2(438.642, 93.2099)
+states/Movement/position = Vector2(438.889, 93.1111)
 "states/Player Animationsplayer_anim_jump/node" = SubResource("AnimationNodeAnimation_4p6xq")
 "states/Player Animationsplayer_anim_jump/position" = Vector2(438.889, 226.667)
 states/Start/position = Vector2(170, 93.1111)
 transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_aq7dk"), "Movement", "Player Animationsplayer_anim_jump", SubResource("AnimationNodeStateMachineTransition_agbwk"), "Player Animationsplayer_anim_jump", "Movement", SubResource("AnimationNodeStateMachineTransition_5gi7b")]
-graph_offset = Vector2(-164, 11)
+graph_offset = Vector2(-236, -51)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_13ki3"]
 
@@ -299,7 +299,7 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_13ki3")
 parameters/conditions/jump = false
 parameters/conditions/move = true
-parameters/Movement/BaseMovement/blend_position = Vector2(0.000450611, -0.341615)
+parameters/Movement/BaseMovement/blend_position = Vector2(0, 0)
 parameters/Movement/TimeScale/scale = 1.0
 "parameters/Movement/TimeScale 2/scale" = 1.0
 parameters/Movement/move_rotate/current_state = "standing"
