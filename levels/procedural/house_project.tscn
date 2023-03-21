@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv6evdq6w7nfw"]
+
+[ext_resource type="PackedScene" uid="uid://b7kbegcfmua64" path="res://levels/procedural/base.tscn" id="1_v7w0x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dcf2g"]
+sky_top_color = Color(0.337255, 0.364706, 0.901961, 1)
+sky_horizon_color = Color(0.634314, 0.633426, 0.75874, 1)
+ground_horizon_color = Color(0.634314, 0.633426, 0.75874, 1)
+
+[sub_resource type="Sky" id="Sky_4xfim"]
+sky_material = SubResource("ProceduralSkyMaterial_dcf2g")
+
+[sub_resource type="Environment" id="Environment_4cocv"]
+background_mode = 2
+sky = SubResource("Sky_4xfim")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfamk"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8s35w"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1e-05, 1),
+"format": 4097,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"primitive": 3,
+"vertex_count": 3,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63)
+}]
+
+[node name="house_project" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4cocv")
+
+[node name="base" parent="." instance=ExtResource("1_v7w0x")]
+material_override = SubResource("StandardMaterial3D_vfamk")
+mesh = SubResource("ArrayMesh_8s35w")
+update = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.84265, 0.538462, 0, -0.538462, 0.84265, 0, 6.68329, 9.99925)
