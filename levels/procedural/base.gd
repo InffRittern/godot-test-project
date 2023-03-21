@@ -1,38 +1,32 @@
 @tool
-extends MeshInstance3D
+extends Node
+
 
 @export var update = false
 var st = SurfaceTool.new()
 
 
-func _ready():
-	if Engine.is_editor_hint():
-		print("I am in editor! Fuck you asshole!")
-		gen_mesh()
-	pass
 	
 func gen_mesh():
-	var a_mesh = ArrayMesh.new()
-	var vertices := PackedVector3Array([
-		Vector3(0,0,0),
-		Vector3(1,0,0),
-		Vector3(1,0,1),
-		]
-		)
-		
-	var indices := PackedInt32Array([
-		0,1,2
-		
-		
-		
-	])
+	var scope_1_pos = Vector3(0,0,0)
+	var scope_1_dim_x :int = 2
+	var scope_1_dim_z :int = 2
 	
-	var array = []
-	array.resize(Mesh.ARRAY_MAX)
-	array[Mesh.ARRAY_VERTEX] = vertices
-	array[Mesh.ARRAY_INDEX] = indices
-	a_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
-	mesh = a_mesh
+	var scope_2_pos = Vector3(4,0,4)
+	var scope_2_dim_x :int = 1
+	var scope_2_dim_z :int = 1
+	
+	
+	var scope_1 = CreateScope.create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
+	var scope_2 = CreateScope.create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
+	var mesh1 = FillScope.fill_scope(scope_1)
+	var mesh2 = FillScope.fill_scope(scope_2)
+	
+
+	
+	
+	
+	print("Base Completed!")
 	pass
 	
 func _process(delta):

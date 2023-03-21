@@ -15,6 +15,11 @@ run/main_scene="res://levels/aperture_lab.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CreateScope="*res://levels/procedural/scripts/CreateScope.gd"
+FillScope="*res://levels/procedural/scripts/FillScope.gd"
+
 [debug]
 
 file_logging/enable_file_logging=true
