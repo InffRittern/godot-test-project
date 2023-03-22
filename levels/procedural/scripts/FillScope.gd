@@ -1,4 +1,3 @@
-@tool
 extends MeshInstance3D
 
 func fill_scope(scope:PackedVector3Array):
@@ -14,4 +13,4 @@ func fill_scope(scope:PackedVector3Array):
 	first_triangle_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, array)
 	mesh = first_triangle_mesh
 	print("Procedural mesh generated!")
-	
+	return mesh
