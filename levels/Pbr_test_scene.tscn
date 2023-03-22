@@ -1,0 +1,142 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqbdf0hjrexpl"]
+
+[ext_resource type="PackedScene" uid="uid://bgiqhrs2g6riq" path="res://environment/modules/underfloor.tscn" id="1_bm0jl"]
+[ext_resource type="PackedScene" uid="uid://7ijk8bwgo3t6" path="res://characters/Player.tscn" id="2_u1l3x"]
+
+[node name="Pbr_test_scene" type="Node3D"]
+
+[node name="underfloor" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="underfloor2" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="underfloor3" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
+
+[node name="underfloor4" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+
+[node name="underfloor6" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+
+[node name="underfloor5" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="underfloor8" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
+
+[node name="underfloor9" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="underfloor10" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.47642, 5)
+
+[node name="underfloor11" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, -0.47642, 5)
+
+[node name="underfloor12" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, -0.47642, 5)
+
+[node name="underfloor15" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, -0.47642, 5)
+
+[node name="underfloor16" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, -0.47642, 2)
+
+[node name="underfloor17" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, -0.47642, -1)
+
+[node name="underfloor18" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 6, -0.476421, -4)
+
+[node name="underfloor19" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 3, -0.476421, -4)
+
+[node name="underfloor20" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, -0.476421, -4)
+
+[node name="underfloor21" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, -0.476421, -4)
+
+[node name="underfloor22" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, -0.47642, -1)
+
+[node name="underfloor23" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, -0.47642, 2)
+
+[node name="underfloor13" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.52358, 5)
+
+[node name="underfloor14" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3, 2.52358, 5)
+
+[node name="underfloor24" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 2.52358, 5)
+
+[node name="underfloor25" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, 2.52358, 5)
+
+[node name="underfloor34" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 6, 3.52358, 5)
+
+[node name="underfloor35" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 3, 3.52358, 5)
+
+[node name="underfloor36" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 0, 3.52358, 5)
+
+[node name="underfloor37" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 6, 3.52358, 2)
+
+[node name="underfloor38" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 3, 3.52358, 2)
+
+[node name="underfloor39" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 0, 3.52358, 2)
+
+[node name="underfloor40" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 6, 3.52358, -1)
+
+[node name="underfloor41" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 3, 3.52358, -1)
+
+[node name="underfloor42" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -1, 4.37114e-08, -4.37114e-08, 0, 3.52358, -1)
+
+[node name="underfloor26" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, 2.52358, 2)
+
+[node name="underfloor27" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 6, 2.52358, -1)
+
+[node name="underfloor28" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 6, 2.52358, -4)
+
+[node name="underfloor29" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 3, 2.52358, -4)
+
+[node name="underfloor30" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(-1, 8.74228e-08, 0, 0, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 2.52358, -4)
+
+[node name="underfloor31" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, 2.52358, -4)
+
+[node name="underfloor32" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, 2.52358, -1)
+
+[node name="underfloor33" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1.31134e-07, 1, 0, 4.37114e-08, -3.55271e-15, 1, 1, -1.31134e-07, -4.37114e-08, -3, 2.52358, 2)
+
+[node name="underfloor7" parent="." instance=ExtResource("1_bm0jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50406, 0.727853, 4.4625)
+light_color = Color(1, 0.615686, 0.341176, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_u1l3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93715, 1.03362, -0.186699)
+max_speed = 3.0
+acceleration = 50.0
+air_friction = 20.0
