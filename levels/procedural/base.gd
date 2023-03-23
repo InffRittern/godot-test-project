@@ -23,7 +23,7 @@ func gen_mesh():
 	
 	
 	# Create arguments for CreateScope
-	var scope_1_pos = Vector3(0,0,0)
+	var scope_1_pos = Vector3(6,6,6)
 	var scope_1_dim_x :int = 2
 	var scope_1_dim_z :int = 2
 	
