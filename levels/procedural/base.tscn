@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7kbegcfmua64"]
+[gd_scene load_steps=4 format=3 uid="uid://b7kbegcfmua64"]
 
 [ext_resource type="Script" path="res://levels/procedural/base.gd" id="1_mji0r"]
 [ext_resource type="PackedScene" uid="uid://7ijk8bwgo3t6" path="res://characters/Player.tscn" id="2_38kgh"]
+[ext_resource type="PackedScene" uid="uid://bgiqhrs2g6riq" path="res://environment/modules/underfloor.tscn" id="3_3bg4k"]
 
 [node name="base" type="Node3D"]
 top_level = true
 script = ExtResource("1_mji0r")
 
 [node name="Player" parent="." instance=ExtResource("2_38kgh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 32)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 0, 1, 36)
+
+[node name="underfloor2" parent="." instance=ExtResource("3_3bg4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)

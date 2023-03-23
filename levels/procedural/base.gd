@@ -31,7 +31,7 @@ func gen_mesh():
 	var scope_2_dim_x :int = 8
 	var scope_2_dim_z :int = 8
 	
-	var scope_3_pos = Vector3(0,0,20)
+	var scope_3_pos = Vector3(0,0,0)
 	var scope_3_dim_x :int = 30
 	var scope_3_dim_z :int = 30
 	
@@ -69,6 +69,12 @@ func gen_mesh():
 	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, underfloor_3x3)
 	for inst in place_module_1:
 		add_child(inst)
+		
+	for child in get_children():
+		print ("child is: ", child)
+		print (child.get_rotation())
+		
+	
 	
 	print("Base Completed!")
 	
