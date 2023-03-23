@@ -1,11 +1,16 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func place_module(scopes, module):
+	var module_instances = []
+	for scope in scopes:
+		print(("scope in Place module is:"), scope)
+		var module_inst = module.instantiate()
+		var mod_pos := Vector3(scope[0])
+		module_inst.set_position(mod_pos)
+		module_instances.append(module_inst)
+	return module_instances
+	
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

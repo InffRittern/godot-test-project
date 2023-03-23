@@ -10,7 +10,11 @@ extends Node
 func gen_mesh():
 	
 	# Load custom classes
-	var fill = load("res://levels/procedural/scripts/FillScope.gd")
+	var fill = preload("res://levels/procedural/scripts/FillScope.gd")
+	var PlaceModule = preload("res://levels/procedural/scripts/PlaceModule.gd")
+	
+	# Load all used modules:
+	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
 	
 	
 	# Create arguments for CreateScope
@@ -40,11 +44,10 @@ func gen_mesh():
 		print(("filled scope - is: "), filled_scope)
 	
 	
-	###
-	const underfloor := preload("res://environment/modules/underfloor.tscn")
-	var underfloor_inst = underfloor.instantiate()
-	underfloor_inst.set_position(Vector3(3,0,3))
-	add_child(underfloor_inst)
+	# Place modules
+	var place_module_1 = PlaceModule.new().place_module(scopes, underfloor_3x3)
+	for inst in place_module_1:
+		add_child(inst)
 	###
 
 	#set position if needed
