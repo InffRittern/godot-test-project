@@ -16,6 +16,7 @@ func gen_mesh():
 	var PlaceModule = preload("res://levels/procedural/scripts/PlaceModule.gd")
 	var RepeatScopes_z = preload("res://levels/procedural/scripts/RepeatScopes_z.gd")
 	var RepeatScopes_x = preload("res://levels/procedural/scripts/RepeatScopes_x.gd")
+	var RotateScope = preload("res://levels/procedural/scripts/RotateScope.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -40,6 +41,11 @@ func gen_mesh():
 	var scopes_2 = CreateScope.create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
 	var scopes_3 = CreateScope.create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
+	# Rotate Scopes
+	var rot_x = RotateScope.new().rotate_scope_x(scopes_1, 90)
+	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 90)
+	
+	
 	# Extend scopes array by all scopes
 	var scopes = []
 	scopes += (scopes_1)
@@ -53,7 +59,7 @@ func gen_mesh():
 	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 10)
 	
 	# Fill scopes by procedural meshes
-	var filled_scopes = fill.new().fill_scope(scopes)
+	var filled_scopes = fill.new().fill_scope(rot_y)
 	for filled_scope in filled_scopes:
 		add_child(filled_scope)
 		print(("filled scope - is: "), filled_scope)
