@@ -22,6 +22,5 @@ func fill_scope(scopes):
 		var mesh_inst = MeshInstance3D.new()
 		mesh_inst.mesh = mesh
 		mesh_instances.append(mesh_inst)
-		print("Procedural mesh instance generated!")
 	
 	return mesh_instances

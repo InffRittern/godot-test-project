@@ -12,5 +12,4 @@ func create_scope (pos:Vector3, dim_x:int, dim_z:int):
 	])
 	scopes.append(scope)
 	return scopes
-	print("The scope created!")
 	

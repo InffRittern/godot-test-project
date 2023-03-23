@@ -4,7 +4,6 @@ extends Node
 func place_module(scopes, module):
 	var module_instances = []
 	for scope in scopes:
-		print(("scope in Place module is:"), scope)
 		var module_inst = module.instantiate()
 		var mod_pos := Vector3(scope[0])
 		module_inst.set_position(mod_pos)
