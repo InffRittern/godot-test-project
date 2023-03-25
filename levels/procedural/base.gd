@@ -76,9 +76,9 @@ func gen_mesh():
 	
 	print("Base Completed!")
 	
-	
-func _physics_process(delta):
-	if Input.is_action_just_pressed("generate_level"):
+
+func _unhandled_input(event):
+	if event.is_action_pressed('generate_level'):
 		gen_mesh()
 
 
