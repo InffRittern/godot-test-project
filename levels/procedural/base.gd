@@ -5,8 +5,7 @@ extends Node
 @export var update = false
 @export var seed := int(228)
 
-func _ready():
-	gen_mesh()
+
 
 	
 func gen_mesh():
@@ -75,12 +74,18 @@ func gen_mesh():
 		print (child.get_rotation())
 		
 	
-	
 	print("Base Completed!")
 	
 	
-	
+func _physics_process(delta):
+	if Input.is_action_just_pressed("generate_level"):
+		gen_mesh()
+
+
+		
 func _process(delta):
+	
+
 	if update:
 		gen_mesh()
 		update = false
