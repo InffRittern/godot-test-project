@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CreateScope="*res://levels/procedural/scripts/CreateScope.gd"
+CreateScope="res://levels/procedural/scripts/CreateScope.gd"
 FillScope="*res://levels/procedural/scripts/FillScope.gd"
 
 [debug]

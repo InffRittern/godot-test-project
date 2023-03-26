@@ -16,13 +16,15 @@ func gen_mesh():
 	var RepeatScopes_z = preload("res://levels/procedural/scripts/RepeatScopes_z.gd")
 	var RepeatScopes_x = preload("res://levels/procedural/scripts/RepeatScopes_x.gd")
 	var RotateScope = preload("res://levels/procedural/scripts/RotateScope.gd")
+	var ScopeInfo = preload("res://levels/procedural/scripts/ScopeInfo.gd")
+	var CreateScope = preload("res://levels/procedural/scripts/CreateScope.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
 	
 	
 	# Create arguments for CreateScope
-	var scope_1_pos = Vector3(6,6,6)
+	var scope_1_pos = Vector3(0,0,0)
 	var scope_1_dim_x :int = 2
 	var scope_1_dim_z :int = 2
 	
@@ -36,9 +38,9 @@ func gen_mesh():
 	
 	
 	# Create Scopes
-	var scopes_1 = CreateScope.create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
-	var scopes_2 = CreateScope.create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
-	var scopes_3 = CreateScope.create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
+	var scopes_1 = CreateScope.new().create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
+	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
+	var scopes_3 = CreateScope.new().create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
 	# Rotate Scopes
 	var rot_x = RotateScope.new().rotate_scope_x(scopes_1, 90)
@@ -58,21 +60,22 @@ func gen_mesh():
 	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 10)
 	
 	# Fill scopes by procedural meshes
-	var filled_scopes = fill.new().fill_scope(rot_y)
+	var filled_scopes = fill.new().fill_scope(scopes_1)
 	for filled_scope in filled_scopes:
 		add_child(filled_scope)
 		print(("filled scope - is: "), filled_scope)
 	
 	
-	# Place modules
+	# Place modules (Then make children locally in main script)
 	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, underfloor_3x3)
 	for inst in place_module_1:
 		add_child(inst)
 		
-	for child in get_children():
-		print ("child is: ", child)
-		print (child.get_rotation())
-		
+
+
+	# Use ScopeInfo
+	print("Scope location is: ", ScopeInfo.new().scope_location(scopes_1))
+	print("Scope rotation is: ", ScopeInfo.new().scope_rotation(scopes_1))
 	
 	print("Base Completed!")
 	
