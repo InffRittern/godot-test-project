@@ -20,6 +20,7 @@ func gen_mesh():
 	var CreateScope = preload("res://levels/procedural/scripts/CreateScope.gd")
 	var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
 	var MoveScope = preload("res://levels/procedural/scripts/MoveScope.gd")
+	var ExtrudeScope = preload("res://levels/procedural/scripts/ExtrudeScope.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -54,10 +55,10 @@ func gen_mesh():
 	var rev_scope3 = ScopeExtraTransforms.new().reverse_scope(rot_x)
 	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 90)
 
+	# Extrude Scopes
 
-	
+	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 30)
 
-	
 	
 	# Extend scopes array by all scopes
 	var scopes = []
@@ -68,7 +69,7 @@ func gen_mesh():
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(rot_x, 10)
+	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, 10)
 	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 10)
 	
 	# Fill scopes by procedural meshes
