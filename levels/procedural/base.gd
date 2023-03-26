@@ -38,8 +38,8 @@ func gen_mesh():
 	var scope_2_dim_z :int = 8
 	
 	var scope_3_pos = Vector3(0,0,0)
-	var scope_3_dim_x :int = 9
-	var scope_3_dim_z :int = 15
+	var scope_3_dim_x :int = 15
+	var scope_3_dim_z :int = 33
 	
 	
 	# Create Scopes
@@ -59,7 +59,7 @@ func gen_mesh():
 
 	# Extrude Scopes
 
-	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 6)
+	var extruded_3 = ExtrudeScope.new(true).extrude(rot_x, 6)
 
 	
 	# Extend scopes array by all scopes

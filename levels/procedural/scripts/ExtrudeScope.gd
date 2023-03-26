@@ -1,7 +1,15 @@
 extends Node
 
+var reverse := bool()
+
+func _init(_reverse:=bool(false)):
+    reverse = _reverse
+    
+
 
 func extrude(scopes, dim):
+
+    var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
     
     var newscope = []
     var newscopes = []
@@ -22,8 +30,12 @@ func extrude(scopes, dim):
             scope[3]+dimvec
         ]
         newscope.append(top)
-        bottom = scope
+        if reverse:
+            bottom = (ScopeExtraTransforms.new().reverse_scope([scope]))[0]
+        else:
+            bottom = scope
         newscope.append(bottom)
+        
         front = [
             scope[0],
             scope[0]+dimvec,
@@ -52,4 +64,6 @@ func extrude(scopes, dim):
             scope[2]
         ]
         newscope.append(right)
+        if reverse:
+            newscope = ScopeExtraTransforms.new().reverse_scope(newscope)
     return newscope
