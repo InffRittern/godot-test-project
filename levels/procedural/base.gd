@@ -35,9 +35,9 @@ func gen_mesh():
 	var scope_2_dim_x :int = 8
 	var scope_2_dim_z :int = 8
 	
-	var scope_3_pos = Vector3(0,0,0)
-	var scope_3_dim_x :int = 30
-	var scope_3_dim_z :int = 30
+	var scope_3_pos = Vector3(5,0,5)
+	var scope_3_dim_x :int = 15
+	var scope_3_dim_z :int = 15
 	
 	
 	# Create Scopes
@@ -46,7 +46,7 @@ func gen_mesh():
 	var scopes_3 = CreateScope.new(-45).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
 	# Move Scopes
-	scopes_3 = MoveScope.new(0, 40).move(scopes_3)
+	scopes_3 = MoveScope.new(0, -5).move(scopes_3)
 	
 	
 	# Rotate Scopes
@@ -57,7 +57,7 @@ func gen_mesh():
 
 	# Extrude Scopes
 
-	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 30)
+	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 15)
 
 	
 	# Extend scopes array by all scopes
@@ -69,8 +69,8 @@ func gen_mesh():
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, 10)
-	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 10)
+	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, 5)
+	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 5)
 	
 	# Fill scopes by procedural meshes
 	var filled_scopes = fill.new().fill_scope(scopes_1)
