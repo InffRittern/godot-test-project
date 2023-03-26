@@ -19,6 +19,7 @@ func gen_mesh():
 	var ScopeInfo = preload("res://levels/procedural/scripts/ScopeInfo.gd")
 	var CreateScope = preload("res://levels/procedural/scripts/CreateScope.gd")
 	var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
+	var MoveScope = preload("res://levels/procedural/scripts/MoveScope.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -43,11 +44,19 @@ func gen_mesh():
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
 	var scopes_3 = CreateScope.new(-45).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
+	# Move Scopes
+	scopes_3 = MoveScope.new(0, 40).move(scopes_3)
+	
+	
 	# Rotate Scopes
 	
 	var rot_x = RotateScope.new().rotate_scope_x(scopes_3, 90)
 	var rev_scope3 = ScopeExtraTransforms.new().reverse_scope(rot_x)
 	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 90)
+
+
+	
+
 	
 	
 	# Extend scopes array by all scopes
