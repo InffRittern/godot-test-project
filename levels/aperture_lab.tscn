@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyb0hwpsb0an"]
+[gd_scene load_steps=7 format=3 uid="uid://d2ncm5mj3n6fe"]
 
 [ext_resource type="PackedScene" uid="uid://w38m1qgff8sl" path="res://environment/floor.tscn" id="2_k8b0m"]
+[ext_resource type="PackedScene" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="3_8nuvh"]
 [ext_resource type="PackedScene" uid="uid://d2dlwft2wkdmr" path="res://environment/cube.tscn" id="3_ipxys"]
-[ext_resource type="PackedScene" uid="uid://b2wmnwl5bfbgl" path="res://characters/Player/Player.tscn" id="3_whmjy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8v7mw"]
 sky_top_color = Color(0.337255, 0.364706, 0.901961, 1)
@@ -37,7 +37,8 @@ transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 50, 0, 0)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("3_ipxys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
+can_sleep = false
 freeze_mode = 1
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("3_whmjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -21)
+[node name="FPSController3D" parent="." instance=ExtResource("3_8nuvh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.49, 4.65462, 7.47359)
