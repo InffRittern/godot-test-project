@@ -38,7 +38,7 @@ func gen_mesh():
 	
 	
 	# Create Scopes
-	var scopes_1 = CreateScope.new().create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
+	var scopes_1 = CreateScope.new(35).create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
 	var scopes_3 = CreateScope.new().create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
@@ -70,13 +70,17 @@ func gen_mesh():
 	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, underfloor_3x3)
 	for inst in place_module_1:
 		add_child(inst)
-		
+	
 
 
 	# Use ScopeInfo
 	print("Scope location is: ", ScopeInfo.new().scope_location(scopes_1))
 	print("Scope rotation is: ", ScopeInfo.new().scope_rotation(scopes_1))
-	
+	var testrot = (ScopeInfo.new().scope_rotation(scopes_1))[0]
+	get_node('test').set_rotation(testrot)
+
+
+
 	print("Base Completed!")
 	
 

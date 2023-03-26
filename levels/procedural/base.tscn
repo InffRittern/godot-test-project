@@ -16,3 +16,6 @@ transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0
 
 [node name="underfloor2" parent="." instance=ExtResource("3_3bg4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="test" parent="." instance=ExtResource("3_3bg4k")]
+transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, -3, 0, 0)
