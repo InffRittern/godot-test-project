@@ -24,6 +24,8 @@ func gen_mesh():
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
+	const underfloor_3x3_x := int(3)
+	const underfloor_3x3_z := int(3)
 	
 	
 	# Create arguments for CreateScope
@@ -35,15 +37,15 @@ func gen_mesh():
 	var scope_2_dim_x :int = 8
 	var scope_2_dim_z :int = 8
 	
-	var scope_3_pos = Vector3(5,0,5)
-	var scope_3_dim_x :int = 15
+	var scope_3_pos = Vector3(0,0,0)
+	var scope_3_dim_x :int = 9
 	var scope_3_dim_z :int = 15
 	
 	
 	# Create Scopes
 	var scopes_1 = CreateScope.new(35).create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
-	var scopes_3 = CreateScope.new(-45).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
+	var scopes_3 = CreateScope.new().create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
 	# Move Scopes
 	scopes_3 = MoveScope.new(0, -5).move(scopes_3)
@@ -51,13 +53,13 @@ func gen_mesh():
 	
 	# Rotate Scopes
 	
-	var rot_x = RotateScope.new().rotate_scope_x(scopes_3, 90)
+	var rot_x = RotateScope.new().rotate_scope_x(scopes_3, 0)
 	var rev_scope3 = ScopeExtraTransforms.new().reverse_scope(rot_x)
-	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 90)
+	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 0)
 
 	# Extrude Scopes
 
-	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 15)
+	var extruded_3 = ExtrudeScope.new().extrude(rot_x, 6)
 
 	
 	# Extend scopes array by all scopes
@@ -69,8 +71,8 @@ func gen_mesh():
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, 5)
-	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 5)
+	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, underfloor_3x3_z)
+	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, underfloor_3x3_x)
 	
 	# Fill scopes by procedural meshes
 	var filled_scopes = fill.new().fill_scope(scopes_1)
@@ -94,6 +96,12 @@ func gen_mesh():
 	get_node('test').set_rotation(testrot)
 
 
+	'	seed(seed)
+	if randi_range(1, 100) < 20:
+		pass
+	var randomized2 = randi_range(1, 100)
+	print("randov value now is the: ", randomized)
+	print("randov2 value now is the: ", randomized2)'
 
 	print("Base Completed!")
 	

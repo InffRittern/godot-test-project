@@ -1,14 +1,15 @@
 extends Node
 
 
-func repeat_scopes(scopes, count):
+func repeat_scopes(scopes, dim_z):
 	var scopes_new = []
 	var z_plus := int(0)
 	var new_scopes = []
 	for scope in scopes:
 		var new_scope_zero := PackedVector3Array([])
 		var base_scope_len = scope[3] - scope[0]
-		var splited_scope_len = base_scope_len / count
+		var splited_scope_len = (scope[3] - scope[0]).normalized()*dim_z
+		var count = (base_scope_len/dim_z).length()
 		for i in range(count):
 			if i < 1:
 				new_scope_zero.append(scope[0])
