@@ -23,3 +23,17 @@ func scope_location(scopes):
     for scope in scopes:
         location_array.append(scope[0])
     return location_array
+
+func scope_dim_x(scopes):
+    var dim_x_array = []
+    for scope in scopes:
+        dim_x_array.append(Vector3(scope[1]-scope[0]).length())
+        print("scope Info: dim x is:", dim_x_array)
+    return dim_x_array
+
+func scope_dim_z(scopes):
+    var dim_z_array = []
+    for scope in scopes:
+        dim_z_array.append(Vector3(scope[3]-scope[0]).length())
+        print("scope Info: dim x is:", dim_z_array)
+    return dim_z_array

@@ -18,6 +18,7 @@ func gen_mesh():
 	var RotateScope = preload("res://levels/procedural/scripts/RotateScope.gd")
 	var ScopeInfo = preload("res://levels/procedural/scripts/ScopeInfo.gd")
 	var CreateScope = preload("res://levels/procedural/scripts/CreateScope.gd")
+	var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -40,10 +41,12 @@ func gen_mesh():
 	# Create Scopes
 	var scopes_1 = CreateScope.new(35).create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
-	var scopes_3 = CreateScope.new().create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
+	var scopes_3 = CreateScope.new(-45).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
 	# Rotate Scopes
-	var rot_x = RotateScope.new().rotate_scope_x(scopes_1, 90)
+	
+	var rot_x = RotateScope.new().rotate_scope_x(scopes_3, 90)
+	var rev_scope3 = ScopeExtraTransforms.new().reverse_scope(rot_x)
 	var rot_y = RotateScope.new().rotate_scope_y(rot_x, 90)
 	
 	
@@ -56,7 +59,7 @@ func gen_mesh():
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(scopes_3, 10)
+	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(rot_x, 10)
 	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, 10)
 	
 	# Fill scopes by procedural meshes
@@ -76,6 +79,7 @@ func gen_mesh():
 	# Use ScopeInfo
 	print("Scope location is: ", ScopeInfo.new().scope_location(scopes_1))
 	print("Scope rotation is: ", ScopeInfo.new().scope_rotation(scopes_1))
+	print("Scope dim x is: ", ScopeInfo.new().scope_dim_x((scopes_1)))
 	var testrot = (ScopeInfo.new().scope_rotation(scopes_1))[0]
 	get_node('test').set_rotation(testrot)
 
