@@ -45,7 +45,7 @@ func gen_mesh():
 	# Create Scopes
 	var scopes_1 = CreateScope.new(35).create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
-	var scopes_3 = CreateScope.new().create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
+	var scopes_3 = CreateScope.new(30).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
 	
 	# Move Scopes
 	scopes_3 = MoveScope.new(0, -5).move(scopes_3)

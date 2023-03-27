@@ -7,9 +7,10 @@ func repeat_scopes(scopes, dim_x):
 	var new_scopes = []
 	for scope in scopes:
 		var new_scope_zero := PackedVector3Array([])
-		var base_scope_len = scope[1] - scope[0]
+		var base_scope_len = (scope[1] - scope[0]).length()
 		var splited_scope_len = (scope[1] - scope[0]).normalized()*dim_x
-		var count = (base_scope_len/dim_x).length()
+		var count := int(roundf(base_scope_len/dim_x))
+		print("for", base_scope_len, "count x is:", count)
 		for i in range(count):
 			if i < 1:
 				new_scope_zero.append(scope[0])
