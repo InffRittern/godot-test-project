@@ -24,9 +24,11 @@ func gen_mesh():
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
+	const SimplePlane_1x1 := preload("res://environment/modules/SimplePlane.tscn")
 	const underfloor_3x3_x := int(3)
 	const underfloor_3x3_z := int(3)
-	
+	const SimplePlane_1x1_x := int(1)
+	const SimplePlane_1x1_z := int(1)
 	
 	# Create arguments for CreateScope
 	var scope_1_pos = Vector3(0,0,0)
@@ -71,18 +73,19 @@ func gen_mesh():
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, underfloor_3x3_z)
-	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, underfloor_3x3_x)
+	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, SimplePlane_1x1_z)
+	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, SimplePlane_1x1_x)
 	
 	# Fill scopes by procedural meshes
-	var filled_scopes = fill.new().fill_scope(scopes_1)
+	'var filled_scopes = fill.new().fill_scope(repeat_3_z_x)
 	for filled_scope in filled_scopes:
 		add_child(filled_scope)
-		print(("filled scope - is: "), filled_scope)
+		print(("filled scope - is: "), filled_scope)'
 	
 	
 	# Place modules (Then make children locally in main script)
-	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, underfloor_3x3)
+
+	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, SimplePlane_1x1)
 	for inst in place_module_1:
 		add_child(inst)
 	
