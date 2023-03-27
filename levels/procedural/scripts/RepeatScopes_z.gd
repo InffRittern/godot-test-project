@@ -1,4 +1,4 @@
-extends Node
+extends Nodeввв
 
 
 func repeat_scopes(scopes, dim_z):
