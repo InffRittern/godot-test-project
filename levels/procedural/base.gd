@@ -22,6 +22,7 @@ func gen_mesh():
 	var MoveScope = preload("res://levels/procedural/scripts/MoveScope.gd")
 	var ExtrudeScope = preload("res://levels/procedural/scripts/ExtrudeScope.gd")
 	var FillModule_1m = preload("res://levels/procedural/scripts/FillModule_1m.gd")
+	var HouseGenerateBaseQuads = preload("res://levels/procedural/scripts/HouseGenerateBaseQuads.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -49,6 +50,13 @@ func gen_mesh():
 	var scopes_1 = CreateScope.new(35).create_scope(scope_1_pos,scope_1_dim_x,scope_1_dim_z)
 	var scopes_2 = CreateScope.new().create_scope(scope_2_pos,scope_2_dim_x,scope_2_dim_z)
 	var scopes_3 = CreateScope.new(30).create_scope(scope_3_pos,scope_3_dim_x,scope_3_dim_z)
+
+
+	# Create House BASE
+
+	var house_base = HouseGenerateBaseQuads.new().generate_quads(1,6,seed)
+
+
 	
 	# Move Scopes
 	scopes_3 = MoveScope.new(0, -5).move(scopes_3)
@@ -65,17 +73,13 @@ func gen_mesh():
 	var extruded_3 = ExtrudeScope.new(true).extrude(rot_x, 6)
 
 	
-	# Extend scopes array by all scopes
-	var scopes = []
-	scopes += (scopes_1)
-	scopes += (scopes_2)
 	
 	
 	
 	
 	# Repeat scopes
-	var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, SimplePlane_1x1_z)
-	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, SimplePlane_1x1_x)
+	'var repeat_3_z = RepeatScopes_z.new().repeat_scopes(extruded_3, SimplePlane_1x1_z)
+	var repeat_3_z_x = RepeatScopes_x.new().repeat_scopes(repeat_3_z, SimplePlane_1x1_x)'
 	
 	# Fill scopes by procedural meshes
 	'var filled_scopes = fill.new().fill_scope(repeat_3_z_x)
@@ -86,7 +90,7 @@ func gen_mesh():
 	
 	# fill modules (Then make children locally in main script)
 
-	var filledmod = FillModule_1m.new().fill_module(extruded_3, SimplePlane_1x1)
+	var filledmod = FillModule_1m.new().fill_module(house_base, SimplePlane_1x1)
 	var seedm := int(0)
 	for inst in filledmod:
 		
@@ -103,9 +107,17 @@ func gen_mesh():
 		mat.emission_enabled = true
 		mat.emission_energy_multiplier = 1
 		inst.get_node("MeshInstance3D").set_surface_override_material(0,mat)
+		inst.add_to_group("generated")
 		add_child(inst)
+		
+
+
+
+	# Check children
+	
 
 	# Place modules (Then make children locally in main script)
+
 
 	'var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, SimplePlane_1x1)
 	var seedm := int(0)
@@ -148,7 +160,16 @@ func gen_mesh():
 
 func _unhandled_input(event):
 	if event.is_action_pressed('generate_level'):
+		'get_tree().reload_current_scene()'
+
+
+		for child in get_children():
+			if child.is_in_group("generated"):
+				remove_child(child)
+
 		gen_mesh()
+		seed +=1
+
 
 
 		

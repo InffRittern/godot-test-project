@@ -12,7 +12,7 @@ func extrude(scopes, dim):
     var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
     
     var newscope = []
-    var newscopes = []
+    
     
     var top := PackedVector3Array([])
     var bottom := PackedVector3Array([])

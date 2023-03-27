@@ -7,18 +7,19 @@
 [node name="base" type="Node3D"]
 top_level = true
 script = ExtResource("1_mji0r")
+seed = 234
 
 [node name="Player" parent="." instance=ExtResource("2_38kgh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -3, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, 5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 0, 1, 36)
 
 [node name="underfloor2" parent="." instance=ExtResource("3_3bg4k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 
 [node name="test" parent="." instance=ExtResource("3_3bg4k")]
-transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, -2.3542, 0.745096)
+transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 3.6458, 0.745096)
 
 [node name="test2" parent="." instance=ExtResource("3_3bg4k")]
-transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, -4.05813, 5.99289)
+transform = Transform3D(1, 0, 0, 0, 0.819152, -0.573576, 0, 0.573576, 0.819152, 0, 1.94187, 5.99289)

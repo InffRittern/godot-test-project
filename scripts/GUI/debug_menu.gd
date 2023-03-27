@@ -1,6 +1,6 @@
 extends ColorRect
 
-var max_fps: int = 0
+@export var max_fps: int = 165
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
