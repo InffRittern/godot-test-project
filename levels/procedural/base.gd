@@ -86,7 +86,22 @@ func gen_mesh():
 	# Place modules (Then make children locally in main script)
 
 	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, SimplePlane_1x1)
+	var seedm := int(0)
 	for inst in place_module_1:
+		
+		seed(seed+seedm)
+		seedm +=1
+		var r = randf_range(0.01,1)
+		var g = randf_range(0.01,1)
+		var b = randf_range(0.01,1)
+		var color = Color(r,g,b,0.5)
+		var mat = StandardMaterial3D.new()
+		mat.set_albedo(color)
+		mat.transparency = true
+		mat.emission = color
+		mat.emission_enabled = true
+		mat.emission_energy_multiplier = 1
+		inst.get_node("MeshInstance3D").set_surface_override_material(0,mat)
 		add_child(inst)
 	
 
