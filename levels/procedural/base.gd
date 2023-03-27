@@ -21,6 +21,7 @@ func gen_mesh():
 	var ScopeExtraTransforms = preload("res://levels/procedural/scripts/ScopeExtraTransforms.gd")
 	var MoveScope = preload("res://levels/procedural/scripts/MoveScope.gd")
 	var ExtrudeScope = preload("res://levels/procedural/scripts/ExtrudeScope.gd")
+	var FillModule_1m = preload("res://levels/procedural/scripts/FillModule_1m.gd")
 	
 	# Load all used modules:
 	const underfloor_3x3 := preload("res://environment/modules/underfloor.tscn")
@@ -83,9 +84,30 @@ func gen_mesh():
 		print(("filled scope - is: "), filled_scope)'
 	
 	
+	# fill modules (Then make children locally in main script)
+
+	var filledmod = FillModule_1m.new().fill_module(extruded_3, SimplePlane_1x1)
+	var seedm := int(0)
+	for inst in filledmod:
+		
+		seed(seed+seedm)
+		seedm +=1
+		var r = randf_range(0.01,1)
+		var g = randf_range(0.01,1)
+		var b = randf_range(0.01,1)
+		var color = Color(r,g,b,0.5)
+		var mat = StandardMaterial3D.new()
+		mat.set_albedo(color)
+		mat.transparency = true
+		mat.emission = color
+		mat.emission_enabled = true
+		mat.emission_energy_multiplier = 1
+		inst.get_node("MeshInstance3D").set_surface_override_material(0,mat)
+		add_child(inst)
+
 	# Place modules (Then make children locally in main script)
 
-	var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, SimplePlane_1x1)
+	'var place_module_1 = PlaceModule.new().place_module(repeat_3_z_x, SimplePlane_1x1)
 	var seedm := int(0)
 	for inst in place_module_1:
 		
@@ -102,7 +124,7 @@ func gen_mesh():
 		mat.emission_enabled = true
 		mat.emission_energy_multiplier = 1
 		inst.get_node("MeshInstance3D").set_surface_override_material(0,mat)
-		add_child(inst)
+		add_child(inst)'
 	
 
 
