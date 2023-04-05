@@ -177,5 +177,9 @@ func _process(delta):
 	
 
 	if update:
+		for child in get_children():
+			if child.is_in_group("generated"):
+				remove_child(child)
 		gen_mesh()
+		seed +=1
 		update = false
