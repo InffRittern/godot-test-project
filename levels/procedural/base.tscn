@@ -7,7 +7,7 @@
 [node name="base" type="Node3D"]
 top_level = true
 script = ExtResource("1_mji0r")
-seed = 234
+seed = 274
 
 [node name="Player" parent="." instance=ExtResource("2_38kgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 9, 5)
